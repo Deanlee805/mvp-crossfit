@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
+const querystring = require('querystring');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 app.use(express.static('public'));
@@ -10,6 +11,14 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', (req, res) => res.send('test server'));
+
+app.post('/workout', (req, res) => {
+  // console.log('message I got>>>>>', req.body);
+  const message = req.body;
+  console.log('message I got>>>>>', message);
+  res.send('ok');
+});
+
 
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
