@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CustomWod from "./customWod";
+import Challenge from "./challenge";
 
 class Wod extends Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class Wod extends Component {
   }
 
   componentDidMount() {
-    fetch("/api").then(res => {
-      console.log("fetched data", res);
-    });
+    // fetch("/api").then(res => {
+    //   console.log("fetched data", res);
+    // });
   }
 
   handleClick() {
@@ -74,19 +75,34 @@ class Wod extends Component {
     ));
 
     return (
-      <div class="container">
-        <h1>Step 1: Select WOD</h1>
-        <select multiple={true} onChange={this.handleSelect}>
+      <div className="container">
+        <h1 style={{ marginBottom: 5, marginTop: 15 }}>Step 1: Select WOD</h1>
+        <select
+          className="form-control"
+          multiple={true}
+          onChange={this.handleSelect}
+        >
           {movementsList}
         </select>
-        <button onClick={this.handleClick}>Save</button>
-        <h1>Step 2: Customize WOD</h1>
+        <button
+          className="btn btn-outline-primary"
+          style={{ marginBottom: 5, marginTop: 5 }}
+          onClick={this.handleClick}
+        >
+          Save
+        </button>
+        <h1 style={{ marginBottom: 5, marginTop: 15 }}>
+          Step 2: Customize WOD
+        </h1>
         <CustomWod
           customizedWod={this.state.customizedWod}
           onInput={this.handleInput}
           onSubmit={this.handleSubmit}
         />
-        <h1>Step 3: Challenge a friend!</h1>
+        <h1 style={{ marginBottom: 15, marginTop: 15 }}>
+          Step 3: Challenge a friend!
+        </h1>
+        <Challenge />
       </div>
     );
   }

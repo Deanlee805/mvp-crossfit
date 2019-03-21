@@ -54,10 +54,14 @@ const CustomWod = props => {
             <th>Reps</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>{formatWod}</tr>
-        </tbody>
+        <tbody>{formatWod}</tbody>
       </table>
+      <button
+        className="btn btn-outline-primary"
+        style={{ marginBottom: 5, marginTop: 5 }}
+      >
+        Submit
+      </button>
     </div>
   );
 };
