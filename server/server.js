@@ -4,7 +4,6 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
