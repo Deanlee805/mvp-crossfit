@@ -35,7 +35,7 @@ const Challenge = props => {
           <div className="col">
             <textarea
               style={{ marginTop: 5 }}
-              class="form-control"
+              className="form-control"
               id="exampleFormControlTextarea1"
               placeholder="Custom message"
               name="message"

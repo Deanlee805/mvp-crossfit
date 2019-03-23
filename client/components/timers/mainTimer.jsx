@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import prettyMs from "pretty-ms";
-import NavBar from "../navBar";
 import DropDown from "./dropDown";
 
 class MainTimer extends Component {
@@ -87,8 +86,6 @@ class MainTimer extends Component {
 
     return (
       <React.Fragment>
-        <NavBar />
-
         <div
           className="container"
           style={{

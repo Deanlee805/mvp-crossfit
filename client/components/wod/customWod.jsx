@@ -36,7 +36,7 @@ const CustomWod = props => {
           </label>
         </div>
         <select className="custom-select" id="inputGroupSelect01">
-          <option selected>Choose...</option>
+          <option defaultValue>Choose...</option>
           <option value="1">ARAMP</option>
           <option value="2">For time</option>
         </select>

@@ -16,7 +16,7 @@ const DropDown = props => {
         marginBottom: "80px"
       }}
     >
-      <option selected>Select the workout</option>
+      <option defaultValue>Select the workout</option>
       {workoutList}
     </select>
   );

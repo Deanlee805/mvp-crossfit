@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import $ from "jquery";
 import CustomWod from "./customWod";
 import Challenge from "./challenge";
-import NavBar from "./navBar";
 
 // hash phone number and use it as key?
 // name : time
@@ -115,12 +114,11 @@ class Wod extends Component {
 
     return (
       <React.Fragment>
-        <NavBar />
         <div className="container">
           <h1 style={{ marginBottom: 5, marginTop: 15 }}>
             Step 1: Select WOD
-            <span class="fa-1x" style={{ marginLeft: 15 }}>
-              <i class="fas fa-dumbbell" />
+            <span className="fa-1x" style={{ marginLeft: 15 }}>
+              <i className="fas fa-dumbbell" />
             </span>
           </h1>
 
@@ -140,8 +138,8 @@ class Wod extends Component {
           </button>
           <h1 style={{ marginBottom: 5, marginTop: 15 }}>
             Step 2: Customize WOD
-            <span class="fa-1x" style={{ marginLeft: 15 }}>
-              <i class="fas fa-user-ninja" />
+            <span className="fa-1x" style={{ marginLeft: 15 }}>
+              <i className="fas fa-user-ninja" />
             </span>
           </h1>
           <CustomWod
@@ -152,8 +150,8 @@ class Wod extends Component {
           />
           <h1 style={{ marginBottom: 15, marginTop: 15 }}>
             Step 3: Challenge a friend!
-            <span class="fa-1x" style={{ marginLeft: 15 }}>
-              <i class="fas fa-sms" />
+            <span className="fa-1x" style={{ marginLeft: 15 }}>
+              <i className="fas fa-sms" />
             </span>
           </h1>
           <Challenge

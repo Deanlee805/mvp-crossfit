@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import prettyMs from "pretty-ms";
-import NavBar from "../navBar";
 
 class Timer extends Component {
   constructor(props) {
@@ -61,7 +60,6 @@ class Timer extends Component {
 
     return (
       <React.Fragment>
-        <NavBar />
         <div
           className="container"
           style={{
