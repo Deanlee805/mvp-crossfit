@@ -15,28 +15,44 @@ const Challenge = props => {
               type="text"
               className="form-control"
               placeholder="Friend's name"
+              name="friendName"
+              value={props.smsDetails.friendName}
+              onChange={props.onInput}
             />
           </div>
           <div className="col">
             <input
               type="text"
               className="form-control"
-              placeholder="Phone number"
+              placeholder="Phone number" // validate phone number
+              name="phoneNum"
+              value={props.smsDetails.phoneNum}
+              onChange={props.onInput}
             />
           </div>
         </div>
         <div className="row">
           <div className="col">
             <textarea
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 5 }}
               class="form-control"
               id="exampleFormControlTextarea1"
               placeholder="Custom message"
+              name="message"
+              value={props.smsDetails.message}
+              onChange={props.onInput}
               rows="3"
             />
           </div>
         </div>
       </form>
+      <button
+        className="btn btn-outline-primary"
+        style={{ marginBottom: 5, marginTop: 5 }}
+        onClick={props.onSubmit}
+      >
+        Send
+      </button>
     </div>
   );
 };

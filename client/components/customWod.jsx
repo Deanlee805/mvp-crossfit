@@ -1,32 +1,5 @@
 import React from "react";
 
-// const CustomWod = props => {
-//   const selectedMoves = Object.keys(props.customizedWod);
-
-//   const formatWod = selectedMoves.map((move, index) => {
-//     return (
-//       <label key={index}>
-//         {move}
-// <input
-//   onChange={props.onInput}
-//   type="text"
-//   name={move}
-//   value={props.customizedWod[move]}
-// />
-//       </label>
-//     );
-//   });
-//   return (
-//     <div>
-//       {console.log("props", props)}
-//       <form style={{ display: "flex grid", flexFlow: "wrap" }}>
-//         {formatWod}
-//       </form>
-//       <button onClick={props.onSubmit}>Submit</button>
-//     </div>
-//   );
-// };
-////////////////////////////////////////////////////////////////////////
 const CustomWod = props => {
   const selectedMoves = Object.keys(props.customizedWod);
 
@@ -36,10 +9,10 @@ const CustomWod = props => {
         <td>{move}</td>
         <td>
           <input
-            onChange={props.onInput}
             type="text"
             name={move}
             value={props.customizedWod[move]}
+            onChange={props.onInput}
           />
         </td>
       </tr>
@@ -47,8 +20,30 @@ const CustomWod = props => {
   });
   return (
     <div>
+      <input
+        style={{ marginTop: 5, marginBottom: 5 }}
+        type="text"
+        className="form-control w-50"
+        placeholder="Name your workout"
+        name="workoutName"
+        value={props.workoutName}
+        onChange={props.onNaming}
+      />
+      <div className="input-group mb-3 w-50">
+        <div className="input-group-prepend">
+          <label className="input-group-text" for="inputGroupSelect01">
+            Style
+          </label>
+        </div>
+        <select className="custom-select" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="1">ARAMP</option>
+          <option value="2">For time</option>
+        </select>
+      </div>
+
       <table className="table">
-        <thead>
+        <thead className="thead-light">
           <tr>
             <th>Exercise</th>
             <th>Reps</th>
@@ -56,15 +51,8 @@ const CustomWod = props => {
         </thead>
         <tbody>{formatWod}</tbody>
       </table>
-      <button
-        className="btn btn-outline-primary"
-        style={{ marginBottom: 5, marginTop: 5 }}
-      >
-        Submit
-      </button>
     </div>
   );
 };
 
 export default CustomWod;
-////////////////////////////////////////////////////////////////////////
