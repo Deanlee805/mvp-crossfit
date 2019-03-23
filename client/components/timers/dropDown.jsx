@@ -3,8 +3,12 @@ import React, { Component } from "react";
 const DropDown = props => {
   const workouts = Object.keys(props.workouts);
 
-  const workoutList = workouts.map(workout => {
-    return <option value={workout}>{workout}</option>;
+  const workoutList = workouts.map((workout, index) => {
+    return (
+      <option value={workout} key={index}>
+        {workout}
+      </option>
+    );
   });
 
   return (

@@ -108,8 +108,10 @@ class Wod extends Component {
   }
 
   render() {
-    const movementsList = this.state.movementLib.map(movement => (
-      <option value={movement}>{movement}</option>
+    const movementsList = this.state.movementLib.map((movement, index) => (
+      <option value={movement} key={index}>
+        {movement}
+      </option>
     ));
 
     return (
