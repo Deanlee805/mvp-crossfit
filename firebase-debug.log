@@ -1,0 +1,33 @@
+[debug] [2019-03-25T19:17:12.689Z] ----------------------------------------------------------------------
+[debug] [2019-03-25T19:17:12.694Z] Command:       /Users/apple/.nvm/versions/node/v6.13.1/bin/node /Users/apple/.nvm/versions/node/v6.13.1/bin/firebase serve
+[debug] [2019-03-25T19:17:12.695Z] CLI Version:   6.5.0
+[debug] [2019-03-25T19:17:12.695Z] Platform:      darwin
+[debug] [2019-03-25T19:17:12.695Z] Node Version:  v6.13.1
+[debug] [2019-03-25T19:17:12.696Z] Time:          Mon Mar 25 2019 12:17:12 GMT-0700 (PDT)
+[debug] [2019-03-25T19:17:12.696Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-25T19:17:12.744Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-25T19:17:12.745Z] > authorizing via signed-in user
+[debug] [2019-03-25T19:17:12.745Z] [iam] checking project mvp-crossfit for permissions ["firebase.projects.get"]
+[debug] [2019-03-25T19:17:12.751Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/mvp-crossfit:testIamPermissions  
+
+[debug] [2019-03-25T19:17:13.427Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-25T19:17:13.433Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/mvp-crossfit  
+ 
+[debug] [2019-03-25T19:17:13.947Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/apple/mvp_crossfit_app'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-25T19:17:19.371Z] Fetching environment
+[debug] [2019-03-25T19:17:19.395Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/74764818365:getServerAppConfig  
+ 
+[debug] [2019-03-25T19:17:19.400Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/74764818365/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-25T19:17:19.706Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-25T19:17:19.707Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-25T19:17:19.768Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-03-25T19:17:29.794Z] Parsing function triggers
+[info] ✔  functions: app: http://localhost:5001/mvp-crossfit/us-central1/app

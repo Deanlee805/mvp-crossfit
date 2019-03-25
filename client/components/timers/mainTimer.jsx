@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import $ from "jquery";
 import prettyMs from "pretty-ms";
 import DropDown from "./dropDown";
 
@@ -7,23 +8,36 @@ class MainTimer extends Component {
     super(props);
     this.state = {
       currentTime: 0,
-      timeLimit: 2000,
+      timeLimit: 0,
       toggle: "off",
       workouts: {
-        Fran: Math.floor(Math.random() * 10) * 10000,
-        Helen: Math.floor(Math.random() * 10) * 10000,
-        Christine: Math.floor(Math.random() * 10) * 10000
+        Amanda: 840000,
+        Angie: 1680000,
+        Annie: 660000,
+        Barbara: 480000
       }
     };
     this.clock = null;
     this.clockIncremental = this.clockIncremental.bind(this);
     this.clockDecremental = this.clockDecremental.bind(this);
+    this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
     this.handleSetTimer = this.handleSetTimer.bind(this);
     this.handleClearTimer = this.handleClearTimer.bind(this);
   }
 
   componentDidMount() {
-    // update state
+    // update workout state
+    var newData = "";
+    $.get("/workout")
+      .then(workoutList => {
+        console.log(workoutList);
+        this.setState({
+          workouts: workoutList
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   clockIncremental() {
@@ -52,12 +66,23 @@ class MainTimer extends Component {
     }
   }
 
+  handleWorkoutChange(event) {
+    console.log(event.target.value);
+    if (event.target.value !== "Select the workout") {
+      const selectedWorkoutTimeLimit = this.state.workouts[event.target.value];
+      this.setState({
+        timeLimit: selectedWorkoutTimeLimit,
+        currentTime: selectedWorkoutTimeLimit
+      });
+    }
+  }
+
   handleSetTimer() {
     if (this.state.toggle === "off") {
       // if workout is for time => clockIncremental
       // if workout is AMRAP => clockDecremental
 
-      this.clock = setInterval(this.clockIncremental, 1);
+      this.clock = setInterval(this.clockDecremental, 1);
     }
     if (this.state.toggle === "on") {
       clearInterval(this.clock);
@@ -71,7 +96,7 @@ class MainTimer extends Component {
     clearInterval(this.clock);
     console.log(this.clock);
     this.setState({
-      currentTime: 0,
+      currentTime: this.state.timeLimit,
       toggle: "off"
     });
   }
@@ -95,7 +120,10 @@ class MainTimer extends Component {
             marginTop: "300px"
           }}
         >
-          <DropDown workouts={this.state.workouts} />
+          <DropDown
+            workouts={this.state.workouts}
+            onWorkoutChange={this.handleWorkoutChange}
+          />
           <h1>
             {prettyMs(this.state.currentTime, {
               verbose: true

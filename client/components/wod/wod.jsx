@@ -13,15 +13,18 @@ class Wod extends Component {
       wodSelectedTemp: [],
       customizedWod: {},
       workoutName: "",
+      timeLimit: 0,
       // later might refactor into an obj
       smsDetails: { friendName: "", message: "", phoneNum: "" }
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleNaming = this.handleNaming.bind(this);
+    this.handleSetTime = this.handleSetTime.bind(this);
     this.handleCustomizeWod = this.handleCustomizeWod.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    console.log("props login>>", this.props.currentUser);
   }
 
   componentDidMount() {
@@ -74,6 +77,12 @@ class Wod extends Component {
     });
   }
 
+  handleSetTime(event) {
+    this.setState({
+      timeLimit: event.target.value * 60000 // in milliseconds
+    });
+  }
+
   // Step 3: Challenge a friend!
   handleInput(event) {
     const smsDetailsTemp = Object.assign({}, this.state.smsDetails);
@@ -96,10 +105,12 @@ class Wod extends Component {
     $.post("/workout", {
       customizedWod: this.state.customizedWod,
       workoutName: this.state.workoutName,
+      timeLimit: this.state.timeLimit,
       smsDetails: this.state.smsDetails
     })
       .then(function(response) {
         console.log(response);
+        alert("message sent");
       })
       .catch(function(error) {
         console.log(error);
@@ -149,6 +160,7 @@ class Wod extends Component {
             workoutName={this.state.workoutName}
             onInput={this.handleCustomizeWod}
             onNaming={this.handleNaming}
+            onSetTime={this.handleSetTime}
           />
           <h1 style={{ marginBottom: 15, marginTop: 15 }}>
             Step 3: Challenge a friend!

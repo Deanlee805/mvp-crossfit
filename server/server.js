@@ -4,20 +4,21 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const sendSms = require('./sendSms');
 const template = require('./template');
+const db = require('../db/db')
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.get('/', (req, res) => res.send('test server'));
+app.get('/workout', (req, res) => {
+  db.readWodData().then((data) => {
+    console.log('Got data!!', data)
+    res.status(200).send(data);
+  })
 
-// message I got>>>>> { customizedWod: { 'wall balls': '1', row: '1', 'box jumps': '1' },
-//   workoutName: 'Workout!',
-//   smsDetails:
-//    { friendName: 'Dean',
-//      message: 'Testing workout',
-//      phoneNum: '6509961385' } }
+})
+
 
 app.post('/workout', (req, res) => {
   // console.log('message I got>>>>>', req.body);
@@ -26,12 +27,14 @@ app.post('/workout', (req, res) => {
   const {
     customizedWod,
     workoutName,
+    timeLimit,
     smsDetails
   } = req.body;
 
-  const formatCustomizedWod = template.workoutTemplate(customizedWod)['formatWorkout'];
-  // console.log('customizedWod', template.workoutTemplate(customizedWod)['formatWorkout']);
-  sendSms.sendMessage(smsDetails.friendName, workoutName, formatCustomizedWod, smsDetails.message, smsDetails.phoneNum);
+  // const formatCustomizedWod = template.workoutTemplate(customizedWod)['formatWorkout'];
+  // sendSms.sendMessage(smsDetails.friendName, workoutName, formatCustomizedWod, smsDetails.message, smsDetails.phoneNum);
+  console.log(workoutName, timeLimit)
+  db.writeWodData(workoutName, timeLimit);
   res.send('ok');
 });
 

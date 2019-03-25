@@ -5,7 +5,7 @@ const messageTemplate = (friendName, workoutName, workout, message) => {
     ${workoutName}
     ${workout}\n
     ${message}\n
-    Reply with your time\n`
+    Log your score in https://mvp-crossfit.firebaseapp.com\n`
   )
 }
 

@@ -19,6 +19,7 @@ const DropDown = props => {
         textAlign: "center",
         marginBottom: "80px"
       }}
+      onChange={props.onWorkoutChange}
     >
       <option defaultValue>Select the workout</option>
       {workoutList}

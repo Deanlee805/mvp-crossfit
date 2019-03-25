@@ -29,6 +29,15 @@ const CustomWod = props => {
         value={props.workoutName}
         onChange={props.onNaming}
       />
+      <input
+        style={{ marginTop: 5, marginBottom: 5 }}
+        type="text"
+        className="form-control w-50"
+        placeholder="Time Limit (minute)"
+        name="timeLimit"
+        value={props.timeLimit}
+        onChange={props.onSetTime}
+      />
       <div className="input-group mb-3 w-50">
         <div className="input-group-prepend">
           <label className="input-group-text" for="inputGroupSelect01">

@@ -13,6 +13,10 @@ module.exports = {
       use: {
         loader: "babel-loader"
       }
+    }, {
+      test: /\.(png|jpg)$/,
+      exclude: /(node_modules)/,
+      loader: 'file-loader'
     }]
   },
   resolve: {
